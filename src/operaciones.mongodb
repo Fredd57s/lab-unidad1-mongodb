@@ -1,0 +1,86 @@
+
+use('techstore');
+
+db.productos.drop();
+
+// Inserción de documentos en la colección productos
+db.productos.insertMany([
+  {
+    nombre: "Samsung Galaxy S23",
+    sku: "SM-GALAXY-023",
+    precio: 899.99,
+    stock: 25,
+    tipo_producto: "Smartphone",
+    fecha_creacion: new Date(),
+    especificaciones: {
+      pantalla: "6.1\" AMOLED",
+      resolucion: "2340x1080",
+      ram_gb: 8,
+      almacenamiento: "256GB",
+      bateria_mAh: 3900,
+      sistema_operativo: "Android 14"
+    }
+  },
+  {
+    nombre: "Laptop Acer Aspire 5",
+    sku: "LAP-ACER-001",
+    precio: 750.00,
+    stock: 10,
+    tipo_producto: "Laptop",
+    fecha_creacion: new Date(),
+    especificaciones: {
+      cpu: "Intel Core i7-1255U",
+      ram_gb: 16,
+      almacenamiento: "512GB SSD",
+      pantalla: "15.6\" Full HD",
+      sistema_operativo: "Windows 11",
+      dimensiones: { alto_cm: 2.0, ancho_cm: 36.0, peso_kg: 1.7 }
+    }
+  },
+  {
+    nombre: "Monitor LG UltraWide 29\"",
+    sku: "MON-LG-029",
+    precio: 299.99,
+    stock: 15,
+    tipo_producto: "Monitor",
+    fecha_creacion: new Date(),
+    especificaciones: {
+      resolucion: "2560x1080",
+      tasa_refresco_Hz: 75,
+      panel: "IPS",
+      puertos: ["HDMI", "DisplayPort"]
+    }
+  }
+]);
+
+// Consulta 1: Mostrar todos los productos
+db.productos.find();
+
+// Consulta 2: Mostrar solo los productos que sean de tipo "Laptop"
+db.productos.find({ tipo_producto: "Laptop" });
+
+// Consulta 3: Mostrar los productos con stock > 10 y precio < 1000
+db.productos.find({ stock: { $gt: 10 }, precio: { $lt: 1000 } });
+
+// Consulta 4: Mostrar solo nombre, precio y stock de los "Smartphone"
+db.productos.find(
+  { tipo_producto: "Smartphone" },
+  { nombre: 1, precio: 1, stock: 1, _id: 0 }
+);
+
+// Operación 1
+db.productos.updateOne(
+  { sku: "SM-GALAXY-023" },
+  { $inc: { stock: -1 } }
+);
+
+// Operación 2
+db.productos.updateOne(
+  { sku: "LAP-ACER-001" },
+  {
+    $set: {
+      precio: 799.99,
+      ultima_revision: new Date()
+    }
+  }
+);
