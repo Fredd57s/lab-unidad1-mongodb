@@ -1,4 +1,4 @@
-# mision-mongodb-FreddyJimenez.
+# lab-unidad1-mongodb.
 Laboratorio 1 Individual: Migración conceptual y despliegue de un sistema de gestión de inventarios (SGI) de un modelo relacional a un modelo
 NoSQL orientado a documentos (MongoDB)
 
