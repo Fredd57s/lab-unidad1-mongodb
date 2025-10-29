@@ -15,7 +15,7 @@ Se realizó el siguiente Diagrama Entidad-Relación (DER) donde se contemplan la
 1. Un producto contiene varios detalles dependiendo del producto (laptop, móvil, monitor), y un detalle (ósea especificación) puede estar en varios productos.
 1. Un producto puede tener varios proveedores, y un proveedor puede ofrecer varios productos.
 
-![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.001.png)
+![](./img/Diagrama.png)
 
 **Diseño del Modelo NoSQL (MongoDB)**
 
@@ -45,43 +45,44 @@ A diferencia de un modelo relacional, en MongoDB los datos se almacenan como doc
 
 ` `}
 
-}
+}
+
 
 **Ejemplo 1: Producto tipo “Laptop”**
 
 { 
 
-id": ObjectId("671eaa12b1d4e9c0f4a91234"), 
+` `id": ObjectId("671eaa12b1d4e9c0f4a91234"), 
 
-"nombre": "Laptop Acer Aspire 5", 
+` `"nombre": "Laptop Acer Aspire 5", 
 
-"sku": "LAP-ACER-001", 
+` `"sku": "LAP-ACER-001", 
 
-"precio": 750.00, 
+` `"precio": 750.00, 
 
-"stock": 10, 
+` `"stock": 10, 
 
-"tipo\_producto": "Laptop", "fecha\_creacion": ISODate("2025-10-28T14:00:00Z"),
+` `"tipo\_producto": "Laptop", "fecha\_creacion": ISODate("2025-10-28T14:00:00Z"),
 
-"especificaciones": { 
+` `"especificaciones": { 
 
-"cpu": "Intel Core i7-1255U", 
+`       `"cpu": "Intel Core i7-1255U", 
 
-"ram\_gb": 16, 
+`       `"ram\_gb": 16, 
 
-"almacenamiento": "512GB SSD", 
+`       `"almacenamiento": "512GB SSD", 
 
-pantalla": "15.6\" Full HD", 
+`       `pantalla": "15.6\" Full HD", 
 
-"sistema\_operativo": "Windows 11", 
+`       `"sistema\_operativo": "Windows 11", 
 
-"dimensiones": { 
+`       `"dimensiones": { 
 
-"alto\_cm": 2.0, "ancho\_cm": 36.0, "peso\_kg": 1.7 
+`           `"alto\_cm": 2.0, "ancho\_cm": 36.0, "peso\_kg": 1.7 
 
-} 
+`       `} 
 
-} 
+`   `} 
 
 }
 
@@ -89,37 +90,37 @@ pantalla": "15.6\" Full HD",
 
 { 
 
-"\_id": ObjectId("671eaa12b1d4e9c0f4a95678"), 
+` `"\_id": ObjectId("671eaa12b1d4e9c0f4a95678"), 
 
-"nombre": "Samsung Galaxy S23", 
+` `"nombre": "Samsung Galaxy S23", 
 
-"sku": "SM-GALAXY-023", 
+` `"sku": "SM-GALAXY-023", 
 
-"precio": 899.99, 
+` `"precio": 899.99, 
 
-"stock": 25, 
+` `"stock": 25, 
 
-"tipo\_producto": "Smartphone", 
+` `"tipo\_producto": "Smartphone", 
 
-"fecha\_creacion": ISODate("2025-10-28T14:00:00Z"), 
+` `"fecha\_creacion": ISODate("2025-10-28T14:00:00Z"), 
 
-"especificaciones": { 
+` `"especificaciones": { 
 
-"pantalla": "6.1 AMOLED", 
+`       `"pantalla": "6.1 AMOLED", 
 
-"resolucion": "2340x1080", 
+`       `"resolucion": "2340x1080", 
 
-"ram\_gb": 8, 
+`       `"ram\_gb": 8, 
 
-"almacenamiento": "256GB", 
+`       `"almacenamiento": "256GB", 
 
-"bateria\_mAh": 3900, 
+`       `"bateria\_mAh": 3900, 
 
-"camara\_principal\_MP": 50, 
+`       `"camara\_principal\_MP": 50, 
 
-"sistema\_operativo": "Android 14" 
+`       `"sistema\_operativo": "Android 14" 
 
-} 
+`       `} 
 
 }
 
@@ -127,49 +128,49 @@ pantalla": "15.6\" Full HD",
 
 1. Se creó la base de datos y se agregó un drop() para la limpieza inicial y poder ejecutar todo desde cero.
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.002.png)
+   ![](./img/Crear.png)
 
 1. Se crearon los documentos a insertar dentro de la base de datos con la ayuda de un insertMany().
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.003.png)
+   ![](./img/Documentos.png)
 
    Resultado de la inserción:
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.004.png)
+   ![](./img/ResultadoDocumentos.png)
 
 1. Se realizaron 4 consultas de lectura:
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.005.png)
+   ![](./img/ConsultasLectura.png)
 
    -Resultado consulta #1: Mostrar todos los productos
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.006.png)
+   ![](./img/Consulta1.png)
 
    -Resultado consulta #2: Mostrar solo Laptops
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.007.png)
+   ![](./img/Consulta2.png)
 
    -Resultado consulta #3: Mostrar solo productos con stock > 10 y precio < 1000
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.008.png)
+   ![](./img/Consulta3.png)
 
    -Resultado consulta #4: Mostrar solo nombre, precio y stock de Smartphones
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.009.png)
+   ![](./img/Consulta4.png)
 
 1. Actualización de datos.
 
    Operación 1: Se redujo el stock del smartphone.
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.010.png)
+   ![](./img/Mod1.png)
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.011.png)
+   ![](./img/MResul1.png)
 
    Operación 2: Se aumentó el precio de la laptop y se añadió un nuevo campo “ultima\_revision”.
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.012.png)
+   ![](./img/Mod2.png)
 
-   ![](Aspose.Words.594a4498-260b-4ec3-8693-98b2949f7bfd.013.png)
+   ![](./img/MResult2.png)
 
 
 1. **Análisis Reflexivo**
@@ -189,3 +190,4 @@ pantalla": "15.6\" Full HD",
    **Pregunta 4: ¿Qué paso técnico recomendaría a continuación para "profesionalizar" esta base de datos? (Piense en rendimiento e integridad de datos que no cubrimos en este laboratorio).**
 
    El siguiente paso técnico sería implementar validación de esquemas mediante JSON Schema en MongoDB para garantizar mantener la estructura establecida y consistencia de tipos. Además, también se podría crear índices sobre campos clave (sku, tipo\_producto, precio) para optimizar las consultas y el rendimiento de las consultas. 
+
